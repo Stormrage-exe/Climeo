@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- left sidebar-->
+        <nav class="side-nav">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <span>Climeo</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li>
+                    <a href="#" class="nav-button">
+                        <i class="fas fa-home"></i>
+                        <span>Forecast Feed</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-button">
+                        <i class="fas fa-search"></i>
+                        <span>Explore</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-button">
+                        <i class="fas fa-bell"></i>
+                        <span>Weather Alerts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-button">
+                        <i class="fas fa-user"></i>
+                        <span>My Climate</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <button class="glow-button">
+                <span>Post</span>
+                <div class="sparkle-area"></div>
+            </button>
+        </nav>
+        
+        <!-- main -->
+        <main class="content-area">
+            <div class="header">
+                <h1>Home Feed</h1>
+            </div>
+            
+            <div class="post-creator">
+                <div class="user-avatar" style="background-image: url('https://i.pinimg.com/736x/21/a3/bb/21a3bb2f78ccc9735fc41c53812c0658.jpg')"></div>
+                <div class="post-input">
+                    <textarea placeholder="Post a Forecast..."></textarea>
+                    <div class="post-actions">
+                        <div class="action-icons">
+                            <i class="fas fa-image"></i>
+                            <i class="fas fa-smile"></i>
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <button class="submit-button">Post</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="posts-feed">
+                <div class="post">
+                    <div class="post-author">
+                        <div class="avatar-small" style="background-image: url('https://i.redd.it/zk9evurhdi6c1.jpeg')"></div>
+                        <div class="author-info">
+                            <span class="author-name">Alex
+                                <br>
+                                @dapolarbear
+                            </span>
+                            <span class="post-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Away on vacantion! Weather is perfect over here!
+                        <br>
+                        <img src="https://i.ibb.co/2Y8tW6F6/countries-with-beautiful-snow-35.jpg">
+                    </div>
+                    <div class="post-stats">
+                        <span><i class="far fa-comment"></i> 14</span>
+                        <span><i class="fas fa-heart"></i> 56</span>
+                        <span><i class="fas fa-share"></i></span>
+                    </div>
+                </div>
+                
+                <div class="post">
+                    <div class="post-author">
+                        <div class="avatar-small" style="background-image: url('https://i.pinimg.com/736x/97/fa/57/97fa57bd8b1c02e8214220323554db9b.jpg')"></div>
+                        <div class="author-info">
+                            <span class="author-name">Jack
+                                <br>
+                                @streetracer
+                            </span>
+                            <span class="post-time">5 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Beautiful day for going out! Going to grab a coffee. What's everyone up to?
+                    </div>
+                    <div class="post-stats">
+                        <span><i class="far fa-comment"></i> 8</span>
+                        <span><i class="fas fa-heart"></i> 42</span>
+                        <span><i class="fas fa-share"></i></span>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <div class="post-author">
+                        <div class="avatar-small" style="background-image: url('https://i.pinimg.com/736x/14/f5/1f/14f51fcb735a326ad0cc1f343f652c75.jpg')"></div>
+                        <div class="author-info">
+                            <span class="author-name">Mary
+                                <br>
+                                @xxmaryxx
+                            </span>
+                            <span class="post-time">5 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        We have a very rainy day over here. Perfect for relaxing.
+                    </div>
+                    <div class="post-stats">
+                        <span><i class="far fa-comment"></i> 12</span>
+                        <span><i class="fas fa-heart"></i> 33</span>
+                        <span><i class="fas fa-share"></i></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- right sidebar -->
+        <aside class="right-sidebar">
+            <div class="search-box">
+                <input type="text" placeholder="Search sunny vibes or stormy chats...">
+                <i class="fas fa-search"></i>
+            </div>
+            
+            <div class="suggestions">
+                <h3>Storm Chasers You Might Like</h3>
+                <div class="suggestion">
+                    <div class="avatar-small" style="background-image: url('https://i.pinimg.com/736x/91/b7/32/91b73222f7a880911452c578e13b0033.jpg')"></div>
+                    <div class="suggestion-info">
+                        <span class="name">Jordan
+                            <br>
+                            @partylifez
+                        </span>
+                        <span class="followers">142 followers</span>
+                    </div>
+                    <button class="follow-button">Follow</button>
+                </div>
+                <div class="suggestion">
+                    <div class="avatar-small" style="background-image: url('https://i.pinimg.com/736x/e8/4e/9b/e84e9bc4bd5944a219081d9e14da6d50.jpg')"></div>
+                    <div class="suggestion-info">
+                        <span class="name">Casey
+                            <br>
+                            @thecase
+                        </span>
+                        <span class="followers">89 followers</span>
+                    </div>
+                    <button class="follow-button">Follow</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+    <script>
+        function setThemeBasedOnWeather() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(async position => {
+                    const { latitude, longitude } = position.coords;
+                    const apiKey = '9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9';
+                    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`);
+                    const data = await response.json();
+                    
+                    const weather = data.weather[0].main.toLowerCase();
+                    document.body.className = '';
+                    
+                    if (weather.includes('rain')) {
+                        document.body.classList.add('rainy-theme');
+                    } else if (weather.includes('snow')) {
+                        document.body.classList.add('snowy-theme');
+                    } else if (weather.includes('cloud')) {
+                        document.body.classList.add('cloudy-theme');
+                    } else {
+                        document.body.classList.add('sunny-theme');
+                    }
+                }, () => {
+                    document.body.classList.add('sunny-theme');
+                });
+            } else {
+                document.body.classList.add('sunny-theme');
+            }
+        }
+
+        setThemeBasedOnWeather();
+    </script>
+</body>
+</html>
