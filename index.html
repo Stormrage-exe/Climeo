@@ -174,67 +174,39 @@
     </div>
     
 <script>
-function applyWeatherTheme() {
-  
-    document.body.className = 'sunny-theme';
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
+    });
     
-    if (!navigator.geolocation) {
-        console.log("Geolocation not supported");
-        return;
-    }
-
-    // Get locatiom
-    navigator.geolocation.getCurrentPosition(
-        async position => {
-            try {
-                const { latitude, longitude } = position.coords;
-                const apiKey = '94a2fb61718addb0518ea5fc3bd87b7d'; // Your API key
-                
-                // Fetch weather data
-                const response = await fetch(
-                    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
-                );
-                
-                if (!response.ok) throw new Error('Weather API failed');
-                
-                const data = await response.json();
-                console.log("Weather data:", data);
-                
-                // Determine theme
-                const weather = data.weather[0].main.toLowerCase();
-                document.body.className = ''; //
-                
-                if (weather.includes('rain') || weather.includes('drizzle')) {
-                    document.body.classList.add('rainy-theme');
-                } 
-                else if (weather.includes('snow') || weather.includes('ice')) {
-                    document.body.classList.add('snowy-theme');
-                } 
-                else if (weather.includes('cloud') || weather.includes('fog') || weather.includes('mist')) {
-                    document.body.classList.add('cloudy-theme');
-                } 
-                else {
-                    document.body.classList.add('sunny-theme');
-                }
-                
-                console.log(`Applied ${weather} theme`);
-                
-            } catch (error) {
-                console.error("Error:", error);
-                document.body.className = 'sunny-theme';
-            }
-        },
-        error => {
-            console.error("Location error:", error);
-            document.body.className = 'sunny-theme';
-        },
-        { timeout: 10000 } // timeout
+    const weatherResponse = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&current_weather=true`
     );
-}
-
-
-window.addEventListener('DOMContentLoaded', applyWeatherTheme);
-
+    const weatherData = await weatherResponse.json();
+    
+    const weatherCode = weatherData.current_weather.weathercode;
+    let theme = 'sunny-theme'; 
+    
+    if (weatherCode >= 51 && weatherCode <= 67) { 
+      theme = 'rainy-theme';
+    } else if (weatherCode >= 71 && weatherCode <= 77) {
+      theme = 'snowy-theme'; 
+    } else if (
+      weatherCode >= 1 && weatherCode <= 3 ||  //
+      weatherCode === 45 || weatherCode === 48 //
+    ) {
+      theme = 'cloudy-theme';
+    }
+    
+    document.body.className = theme;
+    console.log(`Weather code ${weatherCode} → ${theme}`);
+    
+  } catch (error) {
+    console.log("Using sunny theme (fallback)", error);
+    document.body.className = 'sunny-theme';
+  }
+});
 </script>
     
 </body>
