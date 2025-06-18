@@ -211,15 +211,26 @@ body {
 
 .post-input textarea {
     width: 100%;
-    border: none;
-    resize: none;
     font-size: 16px;
-    padding: 12px;
+    padding: 32px;
     min-height: 80px;
-    outline: none;
-    background-color: var(--light);
-    border-radius: 8px;
+    border-radius: 12px;
     margin-bottom: 10px;
+    background: 
+        radial-gradient(ellipse farthest-side at 76% 77%, rgba(245, 228, 212, 0.25) 4%, rgba(255, 255, 255, 0) calc(4% + 1px)), 
+        radial-gradient(circle at 76% 40%, #fef6ec 4%, rgba(255, 255, 255, 0) 4.18%), 
+        linear-gradient(135deg, #ff0000 0%, #000036 100%), 
+        radial-gradient(ellipse at 28% 0%, #ffcfac 0%, rgba(98, 149, 144, 0.5) 100%), 
+        linear-gradient(180deg, #cd6e8a 0%, #f5eab0 69%, #d6c8a2 70%, #a2758d 100%),
+        rgba(255, 255, 255, 0.9);
+    
+    background-clip: padding-box; /* This fixes the border cutoff */
+    background-blend-mode: normal, normal, screen, overlay, normal, normal;
+    color: var(--text);
+    text-shadow: 0 0 2px rgba(255,255,255,0.7);
+    border: 1px solid rgba(162, 117, 141, 0.3) !important;
+    outline: none; /* Removes default focus outline */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
 .post-actions {
@@ -606,19 +617,63 @@ body {
     }
 }
 
-.post-input textarea {
-    background: 
-        radial-gradient(ellipse farthest-side at 76% 77%, rgba(245, 228, 212, 0.25) 4%, rgba(255, 255, 255, 0) calc(4% + 1px)), 
-        radial-gradient(circle at 76% 40%, #fef6ec 4%, rgba(255, 255, 255, 0) 4.18%), 
-        linear-gradient(135deg, #ff0000 0%, #000036 100%), 
-        radial-gradient(ellipse at 28% 0%, #ffcfac 0%, rgba(98, 149, 144, 0.5) 100%), 
-        linear-gradient(180deg, #cd6e8a 0%, #f5eab0 69%, #d6c8a2 70%, #a2758d 100%),
-        rgba(255, 255, 255, 0.9);
-    
-    background-blend-mode: normal, normal, screen, overlay, normal, normal;
-    
-    color: var(--text);
-    text-shadow: 0 0 2px rgba(255,255,255,0.7);
-    
-    border: 1px solid rgba(162, 117, 141, 0.3) !important;
+.card {
+  background-color: var(--bg-color);
+  border-radius: 1.25rem;
+  text-align: center;
+}
+
+.loader {
+  color: rgb(124, 124, 124);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+  display: inline-flex; 
+  align-items: center; 
+  gap: 8px;
+}
+
+.words {
+  overflow: hidden;
+  position: relative;
+  height: 40px; 
+  display: inline-block;
+  vertical-align: middle; 
+}
+
+.word {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  color: #faab6a;
+  animation: spin_4991 10s infinite;
+  position: relative;
+}
+
+
+@keyframes spin_4991 {
+  0%, 15% {
+    transform: translateY(0);
+  }
+  16%, 30% {
+    transform: translateY(-100%);
+  }
+  31%, 45% {
+    transform: translateY(-100%);
+  }
+  46%, 60% {
+    transform: translateY(-200%);
+  }
+  61%, 75% {
+    transform: translateY(-200%);
+  }
+  76%, 85% {
+    transform: translateY(-300%);
+  }
+  86%, 92% {
+    transform: translateY(-300%);
+  }
+  93%, 100% {
+    transform: translateY(-400%);
+  }
 }
