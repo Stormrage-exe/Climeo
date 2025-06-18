@@ -259,6 +259,7 @@ body {
 
 .posts-feed {
     background-color: var(--light);
+    padding-bottom: 70px;
 }
 
 .post {
@@ -536,6 +537,7 @@ body {
     
     .posts-feed {
         width: 100%;
+        padding-bottom: 80px;
     }
     
     .post {
