@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breeze - Profile</title>
+    <title>Social</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
     <div class="app-container">
         <!-- left sidebar-->
         <nav class="side-nav">
@@ -49,8 +48,10 @@
                 <div class="sparkle-area"></div>
             </button>
         </nav>
-
-        <div class="content-area">
+        
+        <!-- main -->
+        <main class="content-area">
+            <div class="content-area">
             <div class="profile-header">
                 <img src="https://i.pinimg.com/736x/55/5f/21/555f2152e0275c5ce2522b853680acde.jpg" alt="Profile" class="profile-pic">
                 <div class="profile-info">
@@ -108,7 +109,8 @@
             </div>
 
         </div>
-
+        </main>
+        
         <!-- right sidebar -->
         <aside class="right-sidebar">
             <div class="search-box">
@@ -121,7 +123,10 @@
                 <div class="suggestion">
                     <div class="avatar-small" style="background-image: url('https://i.pinimg.com/736x/91/b7/32/91b73222f7a880911452c578e13b0033.jpg')"></div>
                     <div class="suggestion-info">
-                        <span class="name">Jordan<br>@partylifez</span>
+                        <span class="name">Jordan
+                            <br>
+                            @partylifez
+                        </span>
                         <span class="followers">142 followers</span>
                     </div>
                     <button class="follow-button">Follow</button>
@@ -129,7 +134,10 @@
                 <div class="suggestion">
                     <div class="avatar-small" style="background-image: url('https://i.pinimg.com/736x/e8/4e/9b/e84e9bc4bd5944a219081d9e14da6d50.jpg')"></div>
                     <div class="suggestion-info">
-                        <span class="name">Casey<br>@thecase</span>
+                        <span class="name">Casey
+                            <br>
+                            @thecase
+                        </span>
                         <span class="followers">89 followers</span>
                     </div>
                     <button class="follow-button">Follow</button>
@@ -137,90 +145,121 @@
             </div>
         </aside>
     </div>
+    
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+  document.body.className = 'loading-theme';
 
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            document.body.className = 'loading-theme';
+  const WEATHER_THEMES = {
+    CLEAR: [0],
+    PARTLY_CLOUDY: [1, 2, 3],
+    FOGGY: [45, 48],
+    DRIZZLE: [51, 53, 55],
+    RAINY: [61, 63, 65, 80, 81, 82],
+    SNOWY: [71, 73, 75, 77, 85, 86],
+    THUNDERSTORM: [95, 96, 99],
+    CLOUDY: [56, 57, 66, 67] 
+  };
 
-            const WEATHER_THEMES = {
-                CLEAR: [0],
-                PARTLY_CLOUDY: [1, 2, 3],
-                FOGGY: [45, 48],
-                DRIZZLE: [51, 53, 55],
-                RAINY: [61, 63, 65, 80, 81, 82],
-                SNOWY: [71, 73, 75, 77, 85, 86],
-                THUNDERSTORM: [95, 96, 99],
-                CLOUDY: [56, 57, 66, 67] 
-            };
+  const THEME_MAP = {
+    CLEAR: 'sunny-theme',
+    PARTLY_CLOUDY: 'partly-cloudy-theme',
+    FOGGY: 'foggy-theme',
+    DRIZZLE: 'drizzle-theme',
+    RAINY: 'rainy-theme',
+    SNOWY: 'snowy-theme',
+    THUNDERSTORM: 'thunderstorm-theme',
+    CLOUDY: 'cloudy-theme'
+  };
 
-            const THEME_MAP = {
-                CLEAR: 'sunny-theme',
-                PARTLY_CLOUDY: 'partly-cloudy-theme',
-                FOGGY: 'foggy-theme',
-                DRIZZLE: 'drizzle-theme',
-                RAINY: 'rainy-theme',
-                SNOWY: 'snowy-theme',
-                THUNDERSTORM: 'thunderstorm-theme',
-                CLOUDY: 'cloudy-theme'
-            };
+  try {
+    const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject, {
+        timeout: 5000,
+        maximumAge: 15 * 60 * 1000
+      });
+    }).catch(() => {
+      console.log("Using default location (timeout)");
+      return { coords: { latitude: 40.7128, longitude: -74.0060 } }; 
+    });
 
-            try {
-                const position = await new Promise((resolve, reject) => {
-                    navigator.geolocation.getCurrentPosition(resolve, reject, {
-                        timeout: 5000,
-                        maximumAge: 15 * 60 * 1000
-                    });
-                }).catch(() => {
-                    console.log("Using default location (timeout)");
-                    return { coords: { latitude: 40.7128, longitude: -74.0060 } }; // NYC fallback
-                });
+    const cacheBuster = new Date().getHours(); 
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&current_weather=true&hourly=weathercode&_=${cacheBuster}`;
+    
+    const weatherResponse = await fetch(weatherUrl, {
+      headers: { 'Accept': 'application/json' }
+    });
+    
+    if (!weatherResponse.ok) throw new Error("Weather API failed");
+    const weatherData = await weatherResponse.json();
 
-                const cacheBuster = new Date().getHours(); 
-                const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&current_weather=true&hourly=weathercode&_=${cacheBuster}`;
-                
-                const weatherResponse = await fetch(weatherUrl, {
-                    headers: { 'Accept': 'application/json' }
-                });
-                
-                if (!weatherResponse.ok) throw new Error("Weather API failed");
-                const weatherData = await weatherResponse.json();
+    const weatherCode = weatherData.current_weather?.weathercode ?? 0;
+    let currentTheme = 'sunny-theme'; 
+    
+    for (const [condition, codes] of Object.entries(WEATHER_THEMES)) {
+      if (codes.includes(weatherCode)) {
+        currentTheme = THEME_MAP[condition];
+        break;
+      }
+    }
 
-                const weatherCode = weatherData.current_weather?.weathercode ?? 0;
-                let currentTheme = 'sunny-theme'; // Default
-                
-                for (const [condition, codes] of Object.entries(WEATHER_THEMES)) {
-                    if (codes.includes(weatherCode)) {
-                        currentTheme = THEME_MAP[condition];
-                        break;
-                    }
-                }
+    document.body.classList.add('theme-transition');
+    document.body.className = currentTheme;
+    
+    console.log(`Weather code ${weatherCode} → ${currentTheme}`);
 
-                document.body.classList.add('theme-transition');
-                document.body.className = currentTheme;
-                
-                console.log(`Weather code ${weatherCode} → ${currentTheme}`);
+    setTimeout(() => {
+      location.reload(); 
+    }, 2 * 60 * 60 * 1000);
 
-                setTimeout(() => {
-                    location.reload(); 
-                }, 2 * 60 * 60 * 1000);
+  } catch (error) {
+    console.log("Weather detection failed, using time-based theme", error);
+    applyTimeBasedTheme();
+  }
+});
 
-            } catch (error) {
-                console.log("Weather detection failed, using time-based theme", error);
-                applyTimeBasedTheme();
-            }
-        });
+function applyTimeBasedTheme() {
+  const hour = new Date().getHours();
+  let theme = 'sunny-theme';
+  
+  if (hour >= 5 && hour < 10) theme = 'sunrise-theme';
+  else if (hour >= 10 && hour < 17) theme = 'sunny-theme';
+  else if (hour >= 17 && hour < 20) theme = 'sunset-theme';
+  else theme = 'night-theme';
+  
+  document.body.className = theme;
+}
+</script>
 
-        function applyTimeBasedTheme() {
-            const hour = new Date().getHours();
-            let theme = 'sunny-theme';
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function setBackgroundBasedOnTime() {
+        const now = new Date();
+        const hours = now.getHours();
+        const textarea = document.querySelector('.post-input textarea');
+
+        textarea.classList.remove('daytime-bg', 'sunset-bg', 'nighttime-bg');
+
+
+        if (hours >= 6 && hours < 10) {
+           
+            textarea.classList.add('sunset-bg');
+        } else if (hours >= 10 && hours < 17) {
+          
+            textarea.classList.add('daytime-bg');
+        } else if (hours >= 17 && hours < 21) {
             
-            if (hour >= 5 && hour < 10) theme = 'sunrise-theme';
-            else if (hour >= 10 && hour < 17) theme = 'sunny-theme';
-            else if (hour >= 17 && hour < 20) theme = 'sunset-theme';
-            else theme = 'night-theme';
-            
-            document.body.className = theme;
+            textarea.classList.add('sunset-bg');
+        } else {
+           
+            textarea.classList.add('nighttime-bg');
         }
-    </script>
+    }
+
+    setBackgroundBasedOnTime();
+    setInterval(setBackgroundBasedOnTime, 60000); 
+});
+</script>
+    
 </body>
 </html>
