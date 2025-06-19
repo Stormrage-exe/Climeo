@@ -185,11 +185,11 @@ body {
     overflow: hidden;
 }
 
-.post-input textarea {
-    width: 100%;
+.post-input textarea.sunset-bg {
+      width: 100%;
     font-size: 16px;
     padding: 15px;
-    min-height: 80px;
+    min-height: 100px;
     max-height: 80px;
     border-radius: 12px;
     margin-bottom: 10px;
@@ -205,6 +205,57 @@ body {
     color: var(--text);
     text-shadow: 0 0 2px rgba(255,255,255,0.7);
     border: 1px solid rgba(162, 117, 141, 0.3) !important;
+    outline: none;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.post-input textarea.daytime-bg {
+      width: 100%;
+    font-size: 16px;
+    padding: 15px;
+     min-height: 100px;
+    max-height: 80px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background: 
+        radial-gradient(ellipse farthest-side at 76% 77%, rgba(255, 255, 255, 0.3) 4%, rgba(255, 255, 255, 0) calc(4% + 1px)),
+        radial-gradient(circle at 76% 40%, #fff9c4 4%, rgba(255, 255, 255, 0) 4.18%),
+        linear-gradient(135deg, #64b5f6 0%, #1976d2 100%),
+        radial-gradient(ellipse at 28% 0%, #bbdefb 0%, rgba(98, 149, 144, 0.5) 100%),
+        linear-gradient(180deg, #4fc3f7 0%, #e1f5fe 69%, #b3e5fc 70%, #0288d1 100%),
+        rgba(255, 255, 255, 0.9);
+  background-clip: padding-box;
+    background-blend-mode: normal, normal, screen, overlay, normal, normal;
+    color: var(--text);
+    text-shadow: 0 0 2px rgba(255,255,255,0.7);
+    border: 1px solid rgba(162, 117, 141, 0.3) !important;
+    outline: none;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.post-input textarea.nighttime-bg {
+    width: 100%;
+    font-size: 16px;
+    padding: 15px;
+    min-height: 100px;
+    max-height: 80px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background: 
+        radial-gradient(ellipse farthest-side at 76% 77%, rgba(255, 236, 236, 0.1) 4%, rgba(0, 0, 0, 0) calc(4% + 1px)),
+        radial-gradient(circle at 76% 40%, #c4c2c2 4%, rgba(28, 22, 37, 0.164) 4.18%),
+        linear-gradient(135deg, #0a0a2a 0%, #000000 100%),
+        linear-gradient(180deg, 
+            rgba(15, 25, 65, 0.9) 0%, 
+            rgba(92, 108, 192, 0.7) 50%, 
+            rgba(13, 15, 27, 0.705) 100%),
+        rgba(0, 0, 0, 0.7);
+    background-blend-mode: normal, normal, screen, normal, normal;
+    color: #e0e0ff !important;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(100, 120, 200, 0.3) !important;
     outline: none;
     box-sizing: border-box;
     resize: none;

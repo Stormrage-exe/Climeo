@@ -249,6 +249,37 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function setBackgroundBasedOnTime() {
+        const now = new Date();
+        const hours = now.getHours();
+        const textarea = document.querySelector('.post-input textarea');
+
+        textarea.classList.remove('daytime-bg', 'sunset-bg', 'nighttime-bg');
+
+
+        if (hours >= 6 && hours < 10) {
+           
+            textarea.classList.add('sunset-bg');
+        } else if (hours >= 10 && hours < 17) {
+          
+            textarea.classList.add('daytime-bg');
+        } else if (hours >= 17 && hours < 21) {
+            
+            textarea.classList.add('sunset-bg');
+        } else {
+           
+            textarea.classList.add('nighttime-bg');
+        }
+    }
+
+    // Run once on load and then every minute (in case the page stays open)
+    setBackgroundBasedOnTime();
+    setInterval(setBackgroundBasedOnTime, 60000); // Update every minute
+});
+</script>
     
 </body>
 </html>
