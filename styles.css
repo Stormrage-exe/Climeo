@@ -442,7 +442,7 @@ html, body {
 .search-box {
     position: relative;
     margin-bottom: 20px;
-    width: 100%;
+    width: 230px; 
 }
 
 .search-box input {
@@ -463,7 +463,7 @@ html, body {
 
 .search-box i {
     position: absolute;
-    right: 15px;
+    left: 255px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-light);
