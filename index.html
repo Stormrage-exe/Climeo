@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-button">
+                    <a href="account.html" class="nav-button">
                         <i class="fas fa-user"></i>
                         <span>My Climate</span>
                     </a>
@@ -71,7 +71,7 @@
 
 
             <div class="post-creator">
-                <div class="user-avatar" style="background-image: url('https://i.pinimg.com/736x/21/a3/bb/21a3bb2f78ccc9735fc41c53812c0658.jpg')"></div>
+                <div class="user-avatar" style="background-image: url('https://i.pinimg.com/736x/55/5f/21/555f2152e0275c5ce2522b853680acde.jpg')"></div>
                 <div class="post-input">
                     <textarea placeholder="Post a Forecast..."></textarea>
                     <div class="post-actions">
@@ -216,10 +216,8 @@
     
 <script>
     document.addEventListener('DOMContentLoaded', async () => {
-  // Set initial loading state
   document.body.className = 'loading-theme';
-  
-  // Weather code mapping (WMO codes)
+
   const WEATHER_THEMES = {
     CLEAR: [0],
     PARTLY_CLOUDY: [1, 2, 3],
@@ -228,10 +226,9 @@
     RAINY: [61, 63, 65, 80, 81, 82],
     SNOWY: [71, 73, 75, 77, 85, 86],
     THUNDERSTORM: [95, 96, 99],
-    CLOUDY: [56, 57, 66, 67] // Special cases
+    CLOUDY: [56, 57, 66, 67] 
   };
 
-  // Theme names that match your CSS classes
   const THEME_MAP = {
     CLEAR: 'sunny-theme',
     PARTLY_CLOUDY: 'partly-cloudy-theme',
@@ -251,7 +248,7 @@
       });
     }).catch(() => {
       console.log("Using default location (timeout)");
-      return { coords: { latitude: 40.7128, longitude: -74.0060 } }; // NYC fallback
+      return { coords: { latitude: 40.7128, longitude: -74.0060 } }; 
     });
 
     const cacheBuster = new Date().getHours(); 
@@ -265,7 +262,7 @@
     const weatherData = await weatherResponse.json();
 
     const weatherCode = weatherData.current_weather?.weathercode ?? 0;
-    let currentTheme = 'sunny-theme'; // Default
+    let currentTheme = 'sunny-theme'; 
     
     for (const [condition, codes] of Object.entries(WEATHER_THEMES)) {
       if (codes.includes(weatherCode)) {
@@ -327,9 +324,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Run once on load and then every minute (in case the page stays open)
     setBackgroundBasedOnTime();
-    setInterval(setBackgroundBasedOnTime, 60000); // Update every minute
+    setInterval(setBackgroundBasedOnTime, 60000); 
 });
 </script>
     

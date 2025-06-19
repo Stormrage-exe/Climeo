@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breeze - Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- left sidebar-->
+        <nav class="side-nav">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <span>Climeo</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html" class="nav-button">
+                        <i class="fas fa-home"></i>
+                        <span>Forecast Feed</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-button">
+                        <i class="fas fa-search"></i>
+                        <span>Explore</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-button">
+                        <i class="fas fa-bell"></i>
+                        <span>Weather Alerts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="account.html" class="nav-button">
+                        <i class="fas fa-user"></i>
+                        <span>My Climate</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <button class="glow-button">
+                <span>Post</span>
+                <div class="sparkle-area"></div>
+            </button>
+        </nav>
+
+        <div class="content-area">
+            <div class="profile-header">
+                <img src="https://i.pinimg.com/736x/55/5f/21/555f2152e0275c5ce2522b853680acde.jpg" alt="Profile" class="profile-pic">
+                <div class="profile-info">
+                    <h1 class="username">River</h1>
+                    <p class="handle">@alexrivers</p>
+                    <p class="bio">we're making it out the dungeon with this one</p>
+                    
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">274</span>
+                            <span class="stat-label">Following</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">127</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                    </div>
+                    
+                    <button class="follow-btn">Follow</button>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="avatar-small" style="background-image: url('https://i.pinimg.com/736x/55/5f/21/555f2152e0275c5ce2522b853680acde.jpg')"></div>
+                <div class="author-info">
+                    <span class="author-name">River<br>@alexrivers</span>
+                </div>
+                <p class="post-time">2 hours ago</p>
+                <br>
+                <img src="https://i.ibb.co/ksyjJsSG/3b2af9827ede2c467722b2ff160af78c-2-55.jpg">
+                <p class="post-content">Golden hour at the beach today. There's something magical about the way the light dances on the water.</p>
+                <br>
+                <div class="post-stats">
+                    <span><i class="far fa-comment"></i> 7</span>
+                    <span><i class="fas fa-heart"></i> 25</span>
+                    <span><i class="fas fa-share"></i>9</span>
+                </div>
+            </div>
+
+ <div class="post">
+                <div class="avatar-small" style="background-image: url('https://i.pinimg.com/736x/55/5f/21/555f2152e0275c5ce2522b853680acde.jpg')"></div>
+                <div class="author-info">
+                    <span class="author-name">River<br>@alexrivers</span>
+                </div>
+                <p class="post-time">3 hours ago</p>
+                <br>
+                <img src="https://i.ibb.co/yjgHsZp/b7de5d4516294266d500489bdcff677e-50-2.jpg">
+                <p class="post-content">Got an icecream!!</p>
+                <br>
+                <div class="post-stats">
+                    <span><i class="far fa-comment"></i>6</span>
+                    <span><i class="fas fa-heart"></i>14</span>
+                    <span><i class="fas fa-share"></i>3</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- right sidebar -->
+        <aside class="right-sidebar">
+            <div class="search-box">
+                <input type="text" placeholder="Search sunny vibes or stormy chats...">
+                <i class="fas fa-search"></i>
+            </div>
+            
+            <div class="suggestions">
+                <h3>Storm Chasers You Might Like</h3>
+                <div class="suggestion">
+                    <div class="avatar-small" style="background-image: url('https://i.pinimg.com/736x/91/b7/32/91b73222f7a880911452c578e13b0033.jpg')"></div>
+                    <div class="suggestion-info">
+                        <span class="name">Jordan<br>@partylifez</span>
+                        <span class="followers">142 followers</span>
+                    </div>
+                    <button class="follow-button">Follow</button>
+                </div>
+                <div class="suggestion">
+                    <div class="avatar-small" style="background-image: url('https://i.pinimg.com/736x/e8/4e/9b/e84e9bc4bd5944a219081d9e14da6d50.jpg')"></div>
+                    <div class="suggestion-info">
+                        <span class="name">Casey<br>@thecase</span>
+                        <span class="followers">89 followers</span>
+                    </div>
+                    <button class="follow-button">Follow</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            document.body.className = 'loading-theme';
+
+            const WEATHER_THEMES = {
+                CLEAR: [0],
+                PARTLY_CLOUDY: [1, 2, 3],
+                FOGGY: [45, 48],
+                DRIZZLE: [51, 53, 55],
+                RAINY: [61, 63, 65, 80, 81, 82],
+                SNOWY: [71, 73, 75, 77, 85, 86],
+                THUNDERSTORM: [95, 96, 99],
+                CLOUDY: [56, 57, 66, 67] 
+            };
+
+            const THEME_MAP = {
+                CLEAR: 'sunny-theme',
+                PARTLY_CLOUDY: 'partly-cloudy-theme',
+                FOGGY: 'foggy-theme',
+                DRIZZLE: 'drizzle-theme',
+                RAINY: 'rainy-theme',
+                SNOWY: 'snowy-theme',
+                THUNDERSTORM: 'thunderstorm-theme',
+                CLOUDY: 'cloudy-theme'
+            };
+
+            try {
+                const position = await new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(resolve, reject, {
+                        timeout: 5000,
+                        maximumAge: 15 * 60 * 1000
+                    });
+                }).catch(() => {
+                    console.log("Using default location (timeout)");
+                    return { coords: { latitude: 40.7128, longitude: -74.0060 } }; // NYC fallback
+                });
+
+                const cacheBuster = new Date().getHours(); 
+                const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&current_weather=true&hourly=weathercode&_=${cacheBuster}`;
+                
+                const weatherResponse = await fetch(weatherUrl, {
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (!weatherResponse.ok) throw new Error("Weather API failed");
+                const weatherData = await weatherResponse.json();
+
+                const weatherCode = weatherData.current_weather?.weathercode ?? 0;
+                let currentTheme = 'sunny-theme'; // Default
+                
+                for (const [condition, codes] of Object.entries(WEATHER_THEMES)) {
+                    if (codes.includes(weatherCode)) {
+                        currentTheme = THEME_MAP[condition];
+                        break;
+                    }
+                }
+
+                document.body.classList.add('theme-transition');
+                document.body.className = currentTheme;
+                
+                console.log(`Weather code ${weatherCode} → ${currentTheme}`);
+
+                setTimeout(() => {
+                    location.reload(); 
+                }, 2 * 60 * 60 * 1000);
+
+            } catch (error) {
+                console.log("Weather detection failed, using time-based theme", error);
+                applyTimeBasedTheme();
+            }
+        });
+
+        function applyTimeBasedTheme() {
+            const hour = new Date().getHours();
+            let theme = 'sunny-theme';
+            
+            if (hour >= 5 && hour < 10) theme = 'sunrise-theme';
+            else if (hour >= 10 && hour < 17) theme = 'sunny-theme';
+            else if (hour >= 17 && hour < 20) theme = 'sunset-theme';
+            else theme = 'night-theme';
+            
+            document.body.className = theme;
+        }
+    </script>
+</body>
+</html>
