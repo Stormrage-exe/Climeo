@@ -14,10 +14,70 @@
     --trending-bg: #F5F6FA;
 }
 
-.sunny-theme { --primary: #FB9E3A; --primary-light: #FFA55D; --secondary: #FFA55D; --border: #D8D8D8; --trending-bg: #F5F6FA; --nav-bg: #FFFFFF; }
-.rainy-theme { --primary: #5D8BF4; --primary-light: #7DA0FA; --secondary: #7DA0FA; --border: #B8C2D9; --trending-bg: #E6ECF8; --nav-bg: #F0F4FF; }
-.snowy-theme { --primary: #A5B4C5; --primary-light: #CBD5E1; --secondary: #CBD5E1; --border: #D1D9E6; --trending-bg: #F0F4F9; --nav-bg: #F8FAFC; }
-.cloudy-theme { --primary: #7F8C8D; --primary-light: #95A5A6; --secondary: #95A5A6; --border: #BDC3C7; --trending-bg: #ECF0F1; --nav-bg: #F2F3F4; }
+.sunny-theme {
+    --primary: #FB9E3A;
+    --primary-light: #FFA55D;
+    --secondary: #FFA55D;
+    --border: #D8D8D8;
+    --trending-bg: #F5F6FA;
+    --nav-bg: #FFFFFF; }
+.rainy-theme {
+     --primary: #5D8BF4;
+     --primary-light: #7DA0FA;
+     --secondary: #7DA0FA;
+     --border: #B8C2D9;
+     --trending-bg: #E6ECF8;
+     --nav-bg: #F0F4FF; }
+.snowy-theme {
+     --primary: #A5B4C5;
+    --primary-light: #CBD5E1; 
+    --secondary: #CBD5E1; 
+    --border: #D1D9E6; 
+    --trending-bg: #F0F4F9; 
+    --nav-bg: #F8FAFC; }
+.cloudy-theme {
+     --primary: #7F8C8D; 
+     --primary-light: #95A5A6; 
+     --secondary: #95A5A6; 
+     --border: #BDC3C7; 
+     --trending-bg: #ECF0F1; 
+     --nav-bg: #F2F3F4; }
+
+.partly-cloudy-theme {
+  --primary: #7D9DCF;
+  --primary-light: #A5C1E4;
+  --secondary: #A5C1E4;
+  --border: #C9D4E5;
+  --trending-bg: #F0F5FC;
+  --nav-bg: #F7FAFD;
+}
+
+.foggy-theme {
+  --primary: #9E9E9E;
+  --primary-light: #BDBDBD;
+  --secondary: #BDBDBD;
+  --border: #E0E0E0;
+  --trending-bg: #F5F5F5;
+  --nav-bg: #FAFAFA;
+}
+
+.drizzle-theme {
+  --primary: #6E9ECF;
+  --primary-light: #90B4DC;
+  --secondary: #90B4DC;
+  --border: #C5D5E7;
+  --trending-bg: #E9F0F7;
+  --nav-bg: #F2F7FC;
+}
+
+.thunderstorm-theme {
+  --primary: #4A4E69;
+  --primary-light: #6B6D89;
+  --secondary: #6B6D89;
+  --border: #9FA0B3;
+  --trending-bg: #E6E7EE;
+  --nav-bg: #F0F1F6;
+}
 
 html, body {
     height: 100%;
