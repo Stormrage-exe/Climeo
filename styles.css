@@ -79,6 +79,7 @@
   --nav-bg: #F0F1F6;
 }
 
+
 html, body {
     height: 100%;
     margin: 0;
@@ -206,6 +207,8 @@ html, body {
     background-color: var(--header-bg);
     border-bottom: 1px solid var(--border);
     z-index: 5;
+    position: sticky;
+    top: 0;
 }
 
 .header h1 {
@@ -348,9 +351,10 @@ html, body {
 }
 
 .post img {
-    width: 570px;
+    max-width: 100%;
+    height: auto;
     border-radius: 12px;
-  margin-left:20px;
+    margin-left: 0;
     max-height: 400px;
     object-fit: cover;
 }
@@ -389,11 +393,11 @@ html, body {
     margin-top: 5px;
 }
 
-
 .post-content {
     margin-bottom: 15px;
     font-size: 15px;
     line-height: 1.5;
+    word-break: break-word;
 }
 
 .post-stats {
@@ -438,7 +442,7 @@ html, body {
 .search-box {
     position: relative;
     margin-bottom: 20px;
-    width: 230px; 
+    width: 100%;
 }
 
 .search-box input {
@@ -459,7 +463,7 @@ html, body {
 
 .search-box i {
     position: absolute;
-    left: 255px;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-light);
@@ -596,26 +600,24 @@ html, body {
     transform: translateY(-2px);
 }
 
+
 @media (max-width: 1200px) {
     .right-sidebar {
         width: 250px;
     }
+    .side-nav {
+        width: 230px;
+    }
 }
 
 @media (max-width: 992px) {
-    .side-nav {
-        width: 80px;
-        padding: 15px 10px;
-    }
     .right-sidebar {
         display: none;
     }
     .content-area {
-        margin-left: 80px;
+        margin-left: 0;
+        max-width: 100%;
     }
-}
-
-@media (max-width: 768px) {
     .app-container {
         flex-direction: column;
     }
@@ -627,18 +629,14 @@ html, body {
         top: auto;
         flex-direction: row;
         padding: 10px;
-    }
-    .content-area {
-        margin: 0;
-        margin-bottom: 70px;
-        min-height: calc(100vh - 70px);
-    }
-    .posts-feed {
-        padding-bottom: 120px;
+        border-radius: 0;
+        border-top: 1px solid var(--border);
+        z-index: 100;
     }
     .nav-links {
         display: flex;
         justify-content: space-around;
+        flex-grow: 0;
     }
     .nav-links li {
         margin: 0;
@@ -646,6 +644,7 @@ html, body {
     .nav-button {
         padding: 10px;
         justify-content: center;
+        flex-direction: column;
     }
     .nav-button span {
         display: none;
@@ -656,6 +655,75 @@ html, body {
     }
     .logo, .glow-button {
         display: none;
+    }
+    .content-area {
+        margin-bottom: 70px;
+        min-height: calc(100vh - 70px);
+    }
+    .posts-feed {
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .post-creator {
+        padding: 10px;
+    }
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+    .post-input textarea {
+        min-height: 80px;
+        font-size: 14px;
+        padding: 12px;
+    }
+    .action-icons i {
+        margin-right: 15px;
+        font-size: 18px;
+    }
+    .submit-button {
+        padding: 6px 15px;
+        font-size: 14px;
+    }
+    .post {
+        padding: 15px;
+    }
+    .post-stats {
+        gap: 15px;
+        padding-left: 50px;
+        font-size: 13px;
+    }
+    .post img {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        padding: 12px 15px;
+    }
+    .header h1 {
+        font-size: 18px;
+    }
+    .post-content {
+        padding-left: 0;
+        margin-left: 0;
+        font-size: 14px;
+    }
+    .post-stats {
+        padding-left: 50px;
+    }
+    .avatar-small {
+        width: 36px;
+        height: 36px;
+    }
+    .post-author {
+        margin-bottom: 8px;
+    }
+    .post-time {
+        font-size: 0.8rem;
     }
     .profile-header {
         flex-direction: column;
@@ -669,42 +737,25 @@ html, body {
     .stats {
         justify-content: center;
     }
+    .profile-info {
+        text-align: center;
+    }
+    .post img {
+        max-height: 250px;
+    }
 }
 
-@media (max-width: 576px) {
-    .post-content {
-        padding-left: 44px;
-        margin-left: -36px;
-        font-size: 14px;
+@media (max-width: 400px) {
+    .nav-button {
+        padding: 8px 5px;
     }
     .post-stats {
-        padding-left: 44px;
-    }
-    .post-input textarea {
-        min-height: 60px;
-        font-size: 14px;
-        padding: 12px;
-    }
-    .action-icons i {
-        margin-right: 15px;
-        font-size: 18px;
-    }
-    .submit-button {
-        padding: 6px 15px;
+        gap: 10px;
     }
     .post {
-        margin-bottom: 12px;
+        padding: 12px;
     }
-    .avatar-small {
-        width: 36px;
-        height: 36px;
-    }
-    .user-avatar {
-        width: 40px;
-        height: 40px;
-    }
-    .profile-pic {
-        width: 80px;
-        height: 80px;
+    .post img {
+        max-height: 200px;
     }
 }
