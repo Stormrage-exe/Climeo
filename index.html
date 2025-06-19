@@ -215,39 +215,91 @@
     </div>
     
 <script>
-document.addEventListener('DOMContentLoaded', async () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+  // Set initial loading state
+  document.body.className = 'loading-theme';
+  
+  // Weather code mapping (WMO codes)
+  const WEATHER_THEMES = {
+    CLEAR: [0],
+    PARTLY_CLOUDY: [1, 2, 3],
+    FOGGY: [45, 48],
+    DRIZZLE: [51, 53, 55],
+    RAINY: [61, 63, 65, 80, 81, 82],
+    SNOWY: [71, 73, 75, 77, 85, 86],
+    THUNDERSTORM: [95, 96, 99],
+    CLOUDY: [56, 57, 66, 67] // Special cases
+  };
+
+  // Theme names that match your CSS classes
+  const THEME_MAP = {
+    CLEAR: 'sunny-theme',
+    PARTLY_CLOUDY: 'partly-cloudy-theme',
+    FOGGY: 'foggy-theme',
+    DRIZZLE: 'drizzle-theme',
+    RAINY: 'rainy-theme',
+    SNOWY: 'snowy-theme',
+    THUNDERSTORM: 'thunderstorm-theme',
+    CLOUDY: 'cloudy-theme'
+  };
+
   try {
     const position = await new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
+      navigator.geolocation.getCurrentPosition(resolve, reject, {
+        timeout: 5000,
+        maximumAge: 15 * 60 * 1000
+      });
+    }).catch(() => {
+      console.log("Using default location (timeout)");
+      return { coords: { latitude: 40.7128, longitude: -74.0060 } }; // NYC fallback
+    });
+
+    const cacheBuster = new Date().getHours(); 
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&current_weather=true&hourly=weathercode&_=${cacheBuster}`;
+    
+    const weatherResponse = await fetch(weatherUrl, {
+      headers: { 'Accept': 'application/json' }
     });
     
-    const weatherResponse = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&current_weather=true`
-    );
+    if (!weatherResponse.ok) throw new Error("Weather API failed");
     const weatherData = await weatherResponse.json();
+
+    const weatherCode = weatherData.current_weather?.weathercode ?? 0;
+    let currentTheme = 'sunny-theme'; // Default
     
-    const weatherCode = weatherData.current_weather.weathercode;
-    let theme = 'sunny-theme'; 
-    
-    if (weatherCode >= 51 && weatherCode <= 67) { 
-      theme = 'rainy-theme';
-    } else if (weatherCode >= 71 && weatherCode <= 77) {
-      theme = 'snowy-theme'; 
-    } else if (
-      weatherCode >= 1 && weatherCode <= 3 ||  //
-      weatherCode === 45 || weatherCode === 48 //
-    ) {
-      theme = 'cloudy-theme';
+    for (const [condition, codes] of Object.entries(WEATHER_THEMES)) {
+      if (codes.includes(weatherCode)) {
+        currentTheme = THEME_MAP[condition];
+        break;
+      }
     }
+
+    document.body.classList.add('theme-transition');
+    document.body.className = currentTheme;
     
-    document.body.className = theme;
-    console.log(`Weather code ${weatherCode} → ${theme}`);
-    
+    console.log(`Weather code ${weatherCode} → ${currentTheme}`);
+
+    setTimeout(() => {
+      location.reload(); 
+    }, 2 * 60 * 60 * 1000);
+
   } catch (error) {
-    console.log("Using sunny theme (fallback)", error);
-    document.body.className = 'sunny-theme';
+    console.log("Weather detection failed, using time-based theme", error);
+    applyTimeBasedTheme();
   }
 });
+
+function applyTimeBasedTheme() {
+  const hour = new Date().getHours();
+  let theme = 'sunny-theme';
+  
+  if (hour >= 5 && hour < 10) theme = 'sunrise-theme';
+  else if (hour >= 10 && hour < 17) theme = 'sunny-theme';
+  else if (hour >= 17 && hour < 20) theme = 'sunset-theme';
+  else theme = 'night-theme';
+  
+  document.body.className = theme;
+}
 </script>
 
 <script>
