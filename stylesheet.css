@@ -145,15 +145,7 @@ body {
     background-color: var(--card-bg);
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Full viewport height */
-    overflow: hidden; /* Prevent scrolling on main container */
-}
-
-.scrollable-content {
-    flex-grow: 1;
-    overflow-y: auto; /* This enables scrolling */
-    display: flex;
-    flex-direction: column;
+    height: 100vh; 
 }
 
 .header {
