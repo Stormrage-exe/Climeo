@@ -186,23 +186,18 @@ body {
 }
 
 .post-input textarea.sunset-bg {
-      width: 100%;
+    width: 100%;
     font-size: 16px;
     padding: 15px;
     min-height: 100px;
     max-height: 80px;
     border-radius: 12px;
     margin-bottom: 10px;
-    background: 
-        radial-gradient(ellipse farthest-side at 76% 77%, rgba(245, 228, 212, 0.25) 4%, rgba(255, 255, 255, 0) calc(4% + 1px)), 
-        radial-gradient(circle at 76% 40%, #fef6ec 4%, rgba(255, 255, 255, 0) 4.18%), 
-        linear-gradient(135deg, #ff0000 0%, #000036 100%), 
-        radial-gradient(ellipse at 28% 0%, #ffcfac 0%, rgba(98, 149, 144, 0.5) 100%), 
-        linear-gradient(180deg, #cd6e8a 0%, #f5eab0 69%, #d6c8a2 70%, #a2758d 100%),
-        rgba(255, 255, 255, 0.9);
-    background-clip: padding-box;
-    background-blend-mode: normal, normal, screen, overlay, normal, normal;
-    color: var(--text);
+    background: #f5eab0;
+    background-image: 
+        radial-gradient(circle at 76% 40%, #fef6ec 4%, transparent 5%),
+        linear-gradient(to bottom right, #ff7e5f, #a2758d);
+    color: #333;
     text-shadow: 0 0 2px rgba(255,255,255,0.7);
     border: 1px solid rgba(162, 117, 141, 0.3) !important;
     outline: none;
@@ -211,25 +206,20 @@ body {
 }
 
 .post-input textarea.daytime-bg {
-      width: 100%;
+    width: 100%;
     font-size: 16px;
     padding: 15px;
-     min-height: 100px;
+    min-height: 100px;
     max-height: 80px;
     border-radius: 12px;
     margin-bottom: 10px;
-    background: 
-        radial-gradient(ellipse farthest-side at 76% 77%, rgba(255, 255, 255, 0.3) 4%, rgba(255, 255, 255, 0) calc(4% + 1px)),
-        radial-gradient(circle at 76% 40%, #fff9c4 4%, rgba(255, 255, 255, 0) 4.18%),
-        linear-gradient(135deg, #64b5f6 0%, #1976d2 100%),
-        radial-gradient(ellipse at 28% 0%, #bbdefb 0%, rgba(98, 149, 144, 0.5) 100%),
-        linear-gradient(180deg, #4fc3f7 0%, #e1f5fe 69%, #b3e5fc 70%, #0288d1 100%),
-        rgba(255, 255, 255, 0.9);
-  background-clip: padding-box;
-    background-blend-mode: normal, normal, screen, overlay, normal, normal;
-    color: var(--text);
+    background: #e1f5fe;
+    background-image: 
+        radial-gradient(circle at 76% 40%, #fff9c4 4%, transparent 5%),
+        linear-gradient(to bottom, #64b5f6, #1976d2);
+    color: #333;
     text-shadow: 0 0 2px rgba(255,255,255,0.7);
-    border: 1px solid rgba(162, 117, 141, 0.3) !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
     outline: none;
     box-sizing: border-box;
     resize: none;
@@ -243,18 +233,12 @@ body {
     max-height: 80px;
     border-radius: 12px;
     margin-bottom: 10px;
-    background: 
-        radial-gradient(ellipse farthest-side at 76% 77%, rgba(255, 236, 236, 0.1) 4%, rgba(0, 0, 0, 0) calc(4% + 1px)),
-        radial-gradient(circle at 76% 40%, #c4c2c2 4%, rgba(28, 22, 37, 0.164) 4.18%),
-        linear-gradient(135deg, #0a0a2a 0%, #000000 100%),
-        linear-gradient(180deg, 
-            rgba(15, 25, 65, 0.9) 0%, 
-            rgba(92, 108, 192, 0.7) 50%, 
-            rgba(13, 15, 27, 0.705) 100%),
-        rgba(0, 0, 0, 0.7);
-    background-blend-mode: normal, normal, screen, normal, normal;
-    color: #e0e0ff !important;
-    text-shadow: 0 0 2px rgba(255, 255, 255, 0.7);
+    background: #0a0a2a;
+    background-image: 
+        radial-gradient(circle at 76% 40%, #e0e0e0 4%, transparent 5%),
+        linear-gradient(to bottom, #1a237e, #000000);
+    color: #e0e0ff;
+    text-shadow: 0 0 2px rgba(255,255,255,0.3);
     border: 1px solid rgba(100, 120, 200, 0.3) !important;
     outline: none;
     box-sizing: border-box;
