@@ -288,9 +288,9 @@ html, body {
 }
 
 .post img {
-    width: 100%;
+    width: 570px;
     border-radius: 12px;
-    margin: 10px 0;
+  margin-left:20px;
     max-height: 400px;
     object-fit: cover;
 }
@@ -334,7 +334,6 @@ html, body {
     margin-bottom: 15px;
     font-size: 15px;
     line-height: 1.5;
-    padding-left: 52px;
 }
 
 .post-stats {
