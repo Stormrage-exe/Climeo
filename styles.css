@@ -202,108 +202,6 @@ html, body {
     overflow-y: auto;
 }
 
-.header {
-    padding: 15px 20px;
-    background-color: var(--header-bg);
-    border-bottom: 1px solid var(--border);
-    z-index: 5;
-    position: sticky;
-    top: 0;
-}
-
-.header h1 {
-    font-size: 20px;
-    font-weight: 800;
-    margin: 0;
-}
-
-.post-creator {
-    padding: 15px;
-    border-bottom: 1px solid var(--border);
-    background-color: var(--card-bg);
-}
-
-.user-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--medium);
-    margin-right: 15px;
-    float: left;
-    background-image: url('https://randomuser.me/api/portraits/men/32.jpg');
-    background-size: cover;
-}
-
-.post-input {
-    overflow: hidden;
-}
-
-.post-input textarea.sunset-bg {
-    width: 100%;
-    font-size: 16px;
-    padding: 15px;
-    min-height: 100px;
-    max-height: 80px;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    background: #f5eab0;
-    background-image: 
-        radial-gradient(circle at 76% 40%, #fef6ec 4%, transparent 5%),
-        linear-gradient(to bottom right, #ff7e5f, #a2758d);
-    color: #333;
-    text-shadow: 0 0 2px rgba(255,255,255,0.7);
-    border: 1px solid rgba(162, 117, 141, 0.3) !important;
-    outline: none;
-    box-sizing: border-box;
-    resize: none;
-}
-
-.post-input textarea.daytime-bg {
-    width: 100%;
-    font-size: 16px;
-    padding: 15px;
-    min-height: 100px;
-    max-height: 80px;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    background: #e1f5fe;
-    background-image: 
-        radial-gradient(circle at 76% 40%, #fff9c4 4%, transparent 5%),
-        linear-gradient(to bottom, #64b5f6, #1976d2);
-    color: #333;
-    text-shadow: 0 0 2px rgba(255,255,255,0.7);
-    border: 1px solid rgba(33, 150, 243, 0.3) !important;
-    outline: none;
-    box-sizing: border-box;
-    resize: none;
-}
-
-.post-input textarea.nighttime-bg {
-    width: 100%;
-    font-size: 16px;
-    padding: 15px;
-    min-height: 100px;
-    max-height: 80px;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    background: #0a0a2a;
-    background-image: 
-        radial-gradient(circle at 76% 40%, #e0e0e0 4%, transparent 5%),
-        linear-gradient(to bottom, #1a237e, #000000);
-    color: #e0e0ff;
-    text-shadow: 0 0 2px rgba(255,255,255,0.3);
-    border: 1px solid rgba(100, 120, 200, 0.3) !important;
-    outline: none;
-    box-sizing: border-box;
-    resize: none;
-}
-
-.post-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .action-icons i {
     margin-right: 20px;
     color: var(--primary);
@@ -317,26 +215,6 @@ html, body {
     transform: scale(1.1);
 }
 
-.submit-button {
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 20px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.submit-button:hover {
-    background-color: var(--secondary);
-    transform: translateY(-2px);
-}
-
-.posts-feed {
-    background-color: var(--light);
-    flex-grow: 1;
-}
 
 .post {
     background: var(--card-bg);
@@ -357,12 +235,6 @@ html, body {
     margin-left: 0;
     max-height: 400px;
     object-fit: cover;
-}
-
-.post-author {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
 }
 
 .avatar-small {
