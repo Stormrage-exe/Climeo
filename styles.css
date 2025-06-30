@@ -473,6 +473,89 @@ html, body {
     transform: translateY(-2px);
 }
 
+.weather-widget-container {
+    margin: 0 20px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.weather-widget {
+    width: 250px;
+    padding: 12px;
+    border-radius: 12px;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+.weather-widget.daytime-bg {
+    background: #e1f5fe;
+    background-image: 
+        radial-gradient(circle at 76% 40%, #fff9c4 4%, transparent 5%),
+        linear-gradient(to bottom, #64b5f6, #1976d2);
+    color: #333;
+    text-shadow: 0 0 2px rgba(255,255,255,0.7);
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.weather-widget.sunset-bg {
+    background: #f5eab0;
+    background-image: 
+        radial-gradient(circle at 76% 40%, #fef6ec 4%, transparent 5%),
+        linear-gradient(to bottom right, #ff7e5f, #a2758d);
+    color: #333;
+    text-shadow: 0 0 2px rgba(255,255,255,0.7);
+    border: 1px solid rgba(162, 117, 141, 0.3);
+}
+
+.weather-widget.nighttime-bg {
+    background: #0a0a2a;
+    background-image: 
+        radial-gradient(circle at 76% 40%, #e0e0e0 4%, transparent 5%),
+        linear-gradient(to bottom, #1a237e, #000000);
+    color: #e0e0ff;
+    text-shadow: 0 0 2px rgba(255,255,255,0.3);
+    border: 1px solid rgba(100, 120, 200, 0.3);
+}
+
+.weather-location {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.weather-temperature {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 6px 0;
+}
+
+.weather-feels-like {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 4px;
+}
+
+.weather-time {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+.weather-loading,
+.weather-error {
+    text-align: center;
+    padding: 8px;
+    font-size: 13px;
+}
+
+.weather-error {
+    color: #ff4444;
+}
+
+
 
 @media (max-width: 1200px) {
     .right-sidebar {
@@ -549,6 +632,9 @@ html, body {
     }
 }
 @media (max-width: 768px) {
+      .weather-widget-container {
+        display: none;
+    }
     .post-creator {
         padding: 10px;
     }
