@@ -41,6 +41,8 @@
                         <span>My Climate</span>
                     </a>
                 </li>
+                <div class="weather-widget" id="weatherWidget">
+                <div class="weather-loading">Loading weather data...</div>
             </ul>
             
             <button class="glow-button">
@@ -329,5 +331,88 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
     
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const weatherWidget = document.getElementById('weatherWidget');
+    if (!weatherWidget || window.innerWidth <= 768) return;
+
+    function updateWeather() {
+        const now = new Date();
+        const hours = now.getHours();
+        
+        weatherWidget.classList.remove('daytime-bg', 'sunset-bg', 'nighttime-bg');
+        
+        if (hours >= 5 && hours < 10) weatherWidget.classList.add('daytime-bg');
+        else if (hours >= 10 && hours < 17) weatherWidget.classList.add('daytime-bg');
+        else if (hours >= 17 && hours < 20) weatherWidget.classList.add('sunset-bg');
+        else weatherWidget.classList.add('nighttime-bg');
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                const timestamp = Date.now();
+                
+                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&${timestamp}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const city = data.address.city || data.address.town || data.address.village || "Your Location";
+                        
+                        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=temperature_2m,apparent_temperature&timezone=auto&${timestamp}`)
+                            .then(response => response.json())
+                            .then(weatherData => {
+                                const currentTemp = Math.round(weatherData.current_weather.temperature);
+                                const currentTime = new Date();
+                                const currentHour = currentTime.getHours();
+                                
+                                let feelsLikeTemp = currentTemp;
+                                if (weatherData.hourly && weatherData.hourly.apparent_temperature) {
+                                    const timeIndex = weatherData.hourly.time.findIndex(time => 
+                                        new Date(time).getHours() === currentHour
+                                    );
+                                    if (timeIndex !== -1) {
+                                        feelsLikeTemp = Math.round(weatherData.hourly.apparent_temperature[timeIndex]);
+                                    }
+                                }
+                                
+                                weatherWidget.innerHTML = `
+                                    <div class="weather-location">${city}</div>
+                                    <div class="weather-temperature">${currentTemp}°C</div>
+                                    <div class="weather-feels-like">Feels like: ${feelsLikeTemp}°C</div>
+                                    <div class="weather-time">Updated: ${currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                                `;
+                            })
+                            .catch(() => {
+                                weatherWidget.innerHTML = `
+                                    <div class="weather-error">Weather unavailable</div>
+                                    <div class="weather-time">Updated: ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                                `;
+                            });
+                    })
+                    .catch(() => {
+                        weatherWidget.innerHTML = `
+                            <div class="weather-error">Location error</div>
+                            <div class="weather-time">Updated: ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                        `;
+                    });
+            }, () => {
+                weatherWidget.innerHTML = `
+                    <div class="weather-error">Enable location</div>
+                    <div class="weather-time">Updated: ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                `;
+            });
+        } else {
+            weatherWidget.innerHTML = `
+                <div class="weather-error">No geolocation</div>
+                <div class="weather-time">Updated: ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+            `;
+        }
+    }
+
+    updateWeather();
+    setInterval(updateWeather, 300000);
+});
+</script>
+
 </body>
 </html>
