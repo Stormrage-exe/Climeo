@@ -504,7 +504,6 @@ html, body {
         border-radius: 0;
         border-top: 1px solid var(--border);
         z-index: 100;
-        /* Added these properties for better button alignment */
         display: flex;
         justify-content: space-around;
         align-items: center;
