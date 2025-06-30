@@ -193,6 +193,7 @@ html, body {
 .content-area {
     flex: 1;
     max-width: 650px;
+    min-width: 0;
     border-right: 1px solid var(--border);
     border-left: 1px solid var(--border);
     background-color: var(--card-bg);
@@ -487,7 +488,7 @@ html, body {
         display: none;
     }
     .content-area {
-        margin-left: 0;
+        margin-left:0px;
         max-width: 100%;
     }
     .app-container {
@@ -547,7 +548,6 @@ html, body {
         padding-bottom: 20px;
     }
 }
-
 @media (max-width: 768px) {
     .post-creator {
         padding: 10px;
