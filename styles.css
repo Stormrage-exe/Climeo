@@ -504,19 +504,29 @@ html, body {
         border-radius: 0;
         border-top: 1px solid var(--border);
         z-index: 100;
+        /* Added these properties for better button alignment */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
     }
     .nav-links {
         display: flex;
         justify-content: space-around;
-        flex-grow: 0;
+        flex-grow: 1;
+        width: 100%;
+        margin: 0;
     }
     .nav-links li {
         margin: 0;
+        flex: 1;
+        text-align: center;
     }
     .nav-button {
-        padding: 10px;
+        padding: 10px 5px;
         justify-content: center;
         flex-direction: column;
+        margin: 0 auto;
+        width: 100%;
     }
     .nav-button span {
         display: none;
@@ -524,6 +534,8 @@ html, body {
     .nav-button i {
         margin-right: 0;
         font-size: 20px;
+        display: block;
+        margin-bottom: 2px;
     }
     .logo, .glow-button {
         display: none;
