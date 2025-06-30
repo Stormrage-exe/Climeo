@@ -745,3 +745,12 @@ html, body {
         height: 40px;
     }
 }
+@media only screen and (max-width: 768px) {
+    .weather-widget-container {
+        display: none !important;
+    }
+    
+    #weatherWidget {
+        display: none !important;
+    }
+}

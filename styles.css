@@ -728,3 +728,12 @@ html, body {
         max-height: 200px;
     }
 }
+@media only screen and (max-width: 768px) {
+    .weather-widget-container {
+        display: none !important;
+    }
+    
+    #weatherWidget {
+        display: none !important;
+    }
+}
