@@ -1,4 +1,5 @@
-Climeo — Weather-Themed Social Media Experience.
+<h1>Climeo — Weather-Themed Social Media Experience.</h1>
+
 Climeo is a fresh and innovative social media platform where the entire user interface dynamically adapts to real-world weather and time. The site’s theme changes based on your current weather conditions, creating an immersive and personalized atmosphere every time you visit. Key features include:
 
 -Weather-driven theme changes that reflect rain, sunshine, snow, and more.
