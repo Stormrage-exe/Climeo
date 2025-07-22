@@ -168,6 +168,11 @@ html, body {
     text-align: center;
 }
 
+.nav-button.active {
+    color: var(--primary);
+    font-weight: 700;
+}
+
 .glow-button {
     background-color: var(--primary);
     color: white;
@@ -191,11 +196,56 @@ html, body {
 
 .main-content {
     flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 650px;
+    min-width: 0;
+    border-right: 1px solid var(--border);
+    border-left: 1px solid var(--border);
     background-color: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: auto;
+    overflow: hidden;
+}
+
+.explore-header {
+    margin-bottom: 30px;
+}
+
+.explore-search {
+    width: 100%;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.explore-search input {
+    width: 100%;
+    padding: 15px 20px;
+    padding-left: 50px;
+    border-radius: 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    background-color: var(--light);
+}
+
+.explore-search input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary);
+}
+
+.explore-search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
 }
 
 .trending-section {
@@ -263,6 +313,66 @@ html, body {
     margin-right: 5px;
 }
 
+.popular-users {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: var(--trending-bg);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.user-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-right: 15px;
+    border: 2px solid var(--primary);
+}
+
+.user-info {
+    flex: 1;
+}
+
+.user-name {
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: var(--text);
+}
+
+.user-handle {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.follow-btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: var(--primary);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.follow-btn:hover {
+    background: var(--secondary);
+}
+
 .right-sidebar {
     width: 275px;
     padding: 20px 15px;
@@ -281,11 +391,12 @@ html, body {
 .search-box {
     position: relative;
     margin-bottom: 20px;
+    width: 230px;
 }
 
 .search-box input {
     width: 100%;
-    padding: 12px 40px 12px 15px;
+    padding: 12px 15px 12px 15px;
     border-radius: 25px;
     border: 1px solid var(--border);
     background-color: var(--light);
@@ -331,14 +442,6 @@ html, body {
 
 .suggestion:last-child {
     border-bottom: none;
-}
-
-.avatar-small {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
 }
 
 .suggestion-info {
@@ -471,9 +574,10 @@ html, body {
     .right-sidebar {
         display: none;
     }
-    .main-content {
+    .content-area {
         margin-left:0px;
         max-width: 100%;
+        border-right: none;
     }
     .app-container {
         flex-direction: column;
@@ -524,7 +628,7 @@ html, body {
     .logo, .glow-button {
         display: none;
     }
-    .main-content {
+    .content-area {
         margin-bottom: 70px;
         min-height: calc(100vh - 70px);
     }
@@ -538,10 +642,14 @@ html, body {
     .trending-grid {
         grid-template-columns: 1fr;
     }
+    
+    .explore-search input {
+        padding: 12px 15px 12px 40px;
+    }
 }
 
 @media (max-width: 576px) {
-    .main-content {
+    .content-area {
         padding: 15px;
     }
     
@@ -552,10 +660,19 @@ html, body {
     .trending-title {
         font-size: 16px;
     }
+    
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .user-name {
+        font-size: 15px;
+    }
 }
 
 @media (max-width: 400px) {
-    .main-content {
+    .content-area {
         padding: 10px;
     }
     
